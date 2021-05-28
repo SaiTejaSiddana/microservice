@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -16,12 +18,17 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @SpringBootApplication
 @EnableSwagger2
-public class MicroServiceApplication {
+public class MicroServiceApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MicroServiceApplication.class, args);
 	}
 	private static Logger _logger = LoggerFactory.getLogger(MicroServiceApplication.class);
+	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
+		return application.sources(MicroServiceApplication.class);
+	}
 
 	@Bean
 	public CommandLineRunner demo(BooksRepository booksRepository, AuthorsRepository authorsRepository){
