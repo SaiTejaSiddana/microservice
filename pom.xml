@@ -13,8 +13,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MicroService</name>
 	<description>Demo project for Micro Service</description>
+	<package>war</package>
 	<properties>
-		<java.version>16</java.version>
+		<java.version>12</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
